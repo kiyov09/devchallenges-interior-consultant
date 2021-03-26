@@ -15,6 +15,8 @@ links.addEventListener('click', (e) => {
     activeLink.classList.remove('active');
     element.classList.add('active');
     activeLink = element;
+
+    navCont.classList.remove('active');
 })
 
 menuIcon.addEventListener('click', () => {
