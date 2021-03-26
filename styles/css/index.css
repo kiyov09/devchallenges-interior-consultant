@@ -60,28 +60,47 @@ nav .links {
   nav .links {
     display: flex;
     position: relative;
+    justify-content: space-between;
+    width: 550px;
   }
 }
 nav .links li {
   list-style: none;
+  position: relative;
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
   margin-bottom: 32px;
+}
+nav .links li:after {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: width 0.2s;
 }
 @media screen and (min-width: 1024px) {
   nav .links li {
     margin-bottom: 0px;
     cursor: pointer;
   }
-  nav .links li ~ li {
-    margin-left: 86px;
+  nav .links li:hover {
+    font-weight: 700;
+    padding-bottom: 10px;
+  }
+  nav .links li:hover:after {
+    width: 100%;
   }
 }
 nav .links li.active {
   font-weight: 700;
-  border-bottom: 2px solid var(--color-light);
   padding-bottom: 10px;
+}
+nav .links li.active:after {
+  width: 100%;
 }
 nav .navigation-container.active .links {
   display: flex;
@@ -90,12 +109,16 @@ nav .navigation-container.active .links {
   justify-content: center;
 }
 nav .navigation-container.active .menu {
-  display: none;
+  opacity: 0;
+  width: 0;
+  transform: rotate(-45deg);
 }
 nav .navigation-container.active .close {
-  display: initial;
+  opacity: 1;
+  width: initial;
   z-index: 200;
   position: relative;
+  transform: rotate(0deg);
 }
 nav .material-icons {
   font-size: 2rem;
@@ -106,8 +129,27 @@ nav .material-icons {
     display: none;
   }
 }
+nav .menu {
+  opacity: 1;
+  width: initial;
+}
 nav .close {
-  display: none;
+  opacity: 0;
+  width: 0px;
+  transform: rotate(45deg);
+}
+nav .close:focus, nav .close:active {
+  outline: 0;
+}
+nav .close, nav .menu {
+  transition: transform 0.1s;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 main {
@@ -206,6 +248,7 @@ main {
   font-size: 14px;
   line-height: 17.07px;
   position: relative;
+  cursor: pointer;
 }
 .hero__cta .material-icons {
   position: absolute;
