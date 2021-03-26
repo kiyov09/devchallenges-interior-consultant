@@ -36,6 +36,7 @@ nav {
   color: var(--color-light);
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
 }
 nav .title {
   font-family: "Crimson Pro", sans-serif;
